@@ -105,13 +105,15 @@ public class _01_StringMethods {
 
 	// Call Utilities.encrypt at the bottom of this file to encrypt String s
 	public static String encrypt(String s, char key) {
-		return null;
+		String encryptedString = Utilities.encrypt(s, key);
+		return encryptedString;
 	}
 
 	// Call Utilities.decrypt at the bottom of this file to decrypt the
 	// cyphertext (encrypted text)
 	public static String decrypt(String s, char key) {
-		return null;
+		String decryptedString = Utilities.decrypt(s, (byte) key );
+		return decryptedString;
 	}
 
 	// Return the number of words in String s that end with String substring
