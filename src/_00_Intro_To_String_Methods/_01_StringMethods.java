@@ -45,8 +45,8 @@ public class _01_StringMethods {
 	// If String s contains the word "underscores", change all of the spaces
 	// to underscores
 	public static String formatSpaces(String s) {
-		if(s.contains("underscores")) {
-			s=s.replace(' ', '_');
+		if (s.contains("underscores")) {
+			s = s.replace(' ', '_');
 		}
 		return s;
 	}
@@ -56,24 +56,51 @@ public class _01_StringMethods {
 	// You cannot assume there are no extra spaces around the name, but you can
 	// assume there is only one space between the first and last name
 	public static String lineLeader(String s1, String s2, String s3) {
-		return null;
+		String s1modified = s1.trim();
+		String s2modified = s2.trim();
+		String s3modified = s3.trim();
+		String s1LastName = s1modified.split(" ")[1];
+		String s2LastName = s2modified.split(" ")[1];
+		String s3LastName = s3modified.split(" ")[1];
+		String currentFirst = "null";
+		if (s1LastName.compareTo(s2LastName) < 0) {
+			if (s1LastName.compareTo(s3LastName) < 0) {
+				currentFirst = s1modified;
+			} else {
+				currentFirst = s3modified;
+			}
+		} else {
+			if (s2LastName.compareTo(s3LastName) < 0) {
+				currentFirst = s2modified;
+			} else {
+				currentFirst = s3modified;
+			}
+		}
+		return currentFirst;
 	}
 
 	// Return the sum of all numerical digits in the String
 	public static int numeralSum(String s) {
-int sum=0;
-	int x=0;
-for (int i = 0; i < s.length(); i++) {
-		if(Character.isDigit(s.charAt(i))==true)
-			 x=Integer.parseInt(s);
-			sum = sum+ x;
-	}
+		int sum = 0;
+		int x = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if (Character.isDigit(s.charAt(i)) == true) {
+				x = Integer.parseInt(s.charAt(i) + "");
+				sum = sum + x;
+			}
+		}
 		return sum;
 	}
 
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
-		return 0;
+		int numberOfAppearances = 0;
+		int index = s.indexOf(substring);
+		while (index != -1) {
+			numberOfAppearances++;
+			index = s.indexOf(substring, index + substring.length());
+		}
+		return numberOfAppearances;
 	}
 
 	// Call Utilities.encrypt at the bottom of this file to encrypt String s
