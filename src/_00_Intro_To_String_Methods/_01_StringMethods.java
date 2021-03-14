@@ -105,34 +105,64 @@ public class _01_StringMethods {
 
 	// Call Utilities.encrypt at the bottom of this file to encrypt String s
 	public static String encrypt(String s, char key) {
-		String encryptedString = Utilities.encrypt(s, key);
+		String encryptedString = Utilities.encrypt(s.getBytes(), (byte) key);
 		return encryptedString;
 	}
 
 	// Call Utilities.decrypt at the bottom of this file to decrypt the
 	// cyphertext (encrypted text)
 	public static String decrypt(String s, char key) {
-		String decryptedString = Utilities.decrypt(s, (byte) key );
+		String decryptedString = Utilities.decrypt(s, (byte) key);
 		return decryptedString;
 	}
 
 	// Return the number of words in String s that end with String substring
 	// You can assume there are no punctuation marks between words
 	public static int wordsEndsWithSubstring(String s, String substring) {
-		return 0;
+		int numberOfWords = 0;
+		String[] words = s.split(" ");
+		for (int i = 0; i < words.length; i++) {
+			if (words[i].endsWith(substring)) {
+				numberOfWords += 1;
+			}
+		}
+		return numberOfWords;
 	}
 
 	// Given String s, return the number of characters between the first
 	// occurrence of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
-		return 0;
+
+		int indexStart = s.indexOf(substring);
+		int indexEnd = 0;
+		for (int i = indexStart; i < s.length(); i++) {
+			int indexTemp = s.indexOf(substring, i);
+			if (indexTemp != -1) {
+				indexEnd = indexTemp;
+			}
+		}
+
+		return (indexEnd - indexStart) - substring.length();
 	}
 
 	// Return true if String s is a palindrome
 	// palindromes are words or phrases are read the same forward as backward.
 	// HINT: ignore/remove all punctuation and spaces in the String
 	public static boolean palindrome(String s) {
+		String palindrome = s.trim();
+		// String palindrome = s.replace(" ", "").replace("!", "");
+		boolean isPalindrome = false;
+		double lengthOfInput = (palindrome.length() / 2) + 0.5;
+
+		for (int i = 0; i < lengthOfInput; i++) {
+			if (palindrome.charAt(i) == palindrome.charAt(palindrome.length() - (i + 1))) {
+				isPalindrome = true;
+			} else {
+				isPalindrome = false;
+				break;
+			}
+		}
 		return true;
 	}
 }
