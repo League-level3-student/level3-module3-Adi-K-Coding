@@ -151,19 +151,20 @@ public class _01_StringMethods {
 	// HINT: ignore/remove all punctuation and spaces in the String
 	public static boolean palindrome(String s) {
 		String palindrome = s.trim();
-		// String palindrome = s.replace(" ", "").replace("!", "");
-		boolean isPalindrome = false;
+		String palindrome1 = s.replace(" ", "").replace("!", "").replace(",", "").replace(".", "").replace("'", "")
+				.replace("-", "").replace(":", "").replace(";", "").replace("?", "");
+		palindrome = palindrome1.toLowerCase();
+		System.out.println(palindrome);
+		boolean isPalindrome = true;
 		double lengthOfInput = (palindrome.length() / 2) + 0.5;
 
 		for (int i = 0; i < lengthOfInput; i++) {
-			if (palindrome.charAt(i) == palindrome.charAt(palindrome.length() - (i + 1))) {
-				isPalindrome = true;
-			} else {
+			if (palindrome.charAt(i) != palindrome.charAt(palindrome.length() - (i + 1))) {
 				isPalindrome = false;
-				break;
+			break;
 			}
 		}
-		return true;
+		return isPalindrome;
 	}
 }
 
