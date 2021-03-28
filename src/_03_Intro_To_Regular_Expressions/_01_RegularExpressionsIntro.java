@@ -13,10 +13,15 @@ package _03_Intro_To_Regular_Expressions;
  */
 
 public class _01_RegularExpressionsIntro {
-    /*
-     * Code method below! 
-     */
-    String emailRemover(String message) {
-        return null;
-    }
+	/*
+	 * Code method below!
+	 */
+	String emailRemover(String message) {
+		String regEx = "";
+		String output = "";
+		regEx = "@[\\w].+[\\.com]";
+		output = message.replaceAll(regEx, "@mail.com");
+		
+		return output;
+	}
 }

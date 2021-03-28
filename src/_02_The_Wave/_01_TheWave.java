@@ -20,8 +20,12 @@ public class _01_TheWave {
 		String lowercase = str.toLowerCase();
 		ArrayList<String> waveStrings = new ArrayList();
 		for (int i = 0; i < lowercase.length(); i++) {
-			if(lowercase.substring(i,i+1).equals(" ")){
-				i+=1;
+			if (lowercase.substring(i, i + 1).equals(" ")) {
+				i += 1;
+				if (i >= lowercase.length()) {
+					break;
+				}
+
 			}
 			String modifiedUppercase = lowercase.substring(i, i + 1).toUpperCase();
 			String modifiedBeginning = lowercase.substring(0, i) + modifiedUppercase;
